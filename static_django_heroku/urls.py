@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from Hello_World import views
+from Hello_World.views import get_index
+from django.contrib.staticfiles import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.get_index),
+    url(r'^$', get_index),
+    url(r'^static/(?P<path>.*)$', views.serve),
 ]
